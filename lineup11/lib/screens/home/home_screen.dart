@@ -4,6 +4,7 @@ import 'package:lineup11/screens/statistics/statistics_screen.dart';
 import '../lineups/lineup_screen.dart';
 import '../players/players_screen.dart';
 import '../callups/callups_screen.dart';
+import '../fines/fines_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -113,6 +114,18 @@ class HomeScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (_) => const CallupsScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      MenuCard(
+                        icon: Icons.attach_money,
+                        title: "Multas",
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const FinesScreen(),
                             ),
                           );
                         },

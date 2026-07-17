@@ -172,33 +172,8 @@ class CallupPreviewScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const Divider(),
 
-              Padding(
-
-                padding: const EdgeInsets.all(20),
-
-                child: SizedBox(
-
-                  width: double.infinity,
-
-                  height: 50,
-
-                  child: ElevatedButton.icon(
-
-                    onPressed: () {
-
-                    },
-
-                    icon: const Icon(Icons.share),
-
-                    label: const Text("Compartir"),
-
-                  ),
-
-                ),
-
-              ),
+              
 
             ],
 
