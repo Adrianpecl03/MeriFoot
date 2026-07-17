@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../models/player.dart';
@@ -13,127 +15,101 @@ class PlayerSlot extends StatelessWidget {
     super.key,
     required this.player,
     required this.onTap,
-    this.width = 50,
-    this.height = 50,
+    this.width = 65,
+    this.height = 90,
   });
 
   @override
   Widget build(BuildContext context) {
-
-    final widget = GestureDetector(
-
+    final slot = GestureDetector(
       onTap: onTap,
 
-      child: Container(
-
+      child: SizedBox(
         width: width,
         height: height,
 
-        decoration: BoxDecoration(
-
-          color: const Color(0xFF233248),
-
-          borderRadius: BorderRadius.circular(10),
-
-          border: Border.all(
-            color: Colors.white24,
-          ),
-
-        ),
-
         child: player == null
 
-            ? const Icon(
-                Icons.add,
-                color: Colors.white,
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+
+                  CircleAvatar(
+                    radius: 22,
+                    backgroundColor: Color(0xFF233248),
+                    child: Icon(Icons.add),
+                  ),
+
+                  SizedBox(height: 6),
+
+                ],
               )
 
             : Column(
-
-                mainAxisAlignment: MainAxisAlignment.center,
-
                 children: [
 
+                  CircleAvatar(
+                    radius: 22,
+                    backgroundColor: const Color(0xFF233248),
+
+                    backgroundImage: player!.imagePath != null
+                        ? FileImage(File(player!.imagePath!))
+                        : null,
+
+                    child: player!.imagePath == null
+                        ? const Icon(Icons.person)
+                        : null,
+                  ),
+
+                  const SizedBox(height: 4),
+
                   Text(
-
                     player!.number.toString(),
-
                     style: const TextStyle(
-
                       fontWeight: FontWeight.bold,
-
                       fontSize: 12,
-
                     ),
-
                   ),
 
-                  Padding(
-
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-
+                  SizedBox(
+                    width: width,
                     child: Text(
-
                       player!.name,
-
-                      overflow: TextOverflow.ellipsis,
-
-                      maxLines: 1,
-
                       textAlign: TextAlign.center,
-
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                       style: const TextStyle(
-                        fontSize: 8,
+                        fontSize: 10,
                       ),
-
                     ),
-
                   ),
-
                 ],
-
               ),
-
       ),
-
     );
 
     if (player == null) {
-      return widget;
+      return slot;
     }
 
     return Draggable<Player>(
-
       data: player,
 
       feedback: Material(
-
         color: Colors.transparent,
-
         child: SizedBox(
-
           width: width,
-
           height: height,
-
-          child: widget,
-
+          child: slot,
         ),
-
       ),
 
       childWhenDragging: Opacity(
-
         opacity: .35,
-
-        child: widget,
-
+        child: slot,
       ),
 
-      child: widget,
-
+      child: slot,
     );
-
   }
-
 }

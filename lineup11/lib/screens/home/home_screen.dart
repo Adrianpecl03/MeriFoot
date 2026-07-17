@@ -3,6 +3,7 @@ import 'package:lineup11/screens/statistics/statistics_screen.dart';
 
 import '../lineups/lineup_screen.dart';
 import '../players/players_screen.dart';
+import '../callups/callups_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -100,6 +101,18 @@ class HomeScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (_) => const StatisticsScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      MenuCard(
+                        icon: Icons.assignment,
+                        title: "Convocatorias",
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const CallupsScreen(),
                             ),
                           );
                         },

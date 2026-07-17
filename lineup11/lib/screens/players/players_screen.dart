@@ -8,6 +8,8 @@ import 'add_player_screen.dart';
 import '../../services/player_service.dart';
 import '../../widgets/player_actions_dialog.dart';
 
+import 'dart:io';
+
 class PlayersScreen extends StatefulWidget {
   const PlayersScreen({super.key});
 
@@ -205,12 +207,19 @@ class _PlayersScreenState extends State<PlayersScreen> {
                             child: ListTile(
 
                               leading: CircleAvatar(
+                                radius: 24,
                                 backgroundColor: const Color(0xFF233248),
-                                child: Text(
-                                  player.number.toString(),
-                                ),
-                              ),
 
+                                backgroundImage: player.imagePath != null
+                                    ? FileImage(File(player.imagePath!))
+                                    : null,
+
+                                child: player.imagePath == null
+                                    ? Text(
+                                        player.number.toString(),
+                                      )
+                                    : null,
+                              ),
                               title: Text(player.name),
 
                               subtitle: Text(

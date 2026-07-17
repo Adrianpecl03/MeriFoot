@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import '../../models/player.dart';
 import '../../models/player_position.dart';
 import '../../services/player_service.dart';
+import 'dart:io';
+
+import '../../services/image_service.dart';
 
 class AddPlayerScreen extends StatefulWidget {
   final Player? player;
@@ -25,11 +28,13 @@ class _AddPlayerScreenState extends State<AddPlayerScreen> {
   final TextEditingController notesController = TextEditingController();
 
   String dominantFoot = "Derecho";
+  String? imagePath;
 
   final List<PlayerPosition> selectedPositions = [];
-
+  
   @override
   void initState() {
+    debugPrint("Imagen cargada: ${widget.player?.imagePath}");
     super.initState();
 
     if (widget.player == null) return;
@@ -45,6 +50,7 @@ class _AddPlayerScreenState extends State<AddPlayerScreen> {
     notesController.text = player.notes ?? "";
 
     dominantFoot = player.dominantFoot ?? "Derecho";
+    imagePath = player.imagePath;
 
     selectedPositions.addAll(player.positions);
   }
@@ -123,7 +129,7 @@ class _AddPlayerScreenState extends State<AddPlayerScreen> {
     }
 
     if (widget.player == null) {
-
+      debugPrint("Ruta imagen: $imagePath");  
       await PlayerService.addPlayer(
 
         name: nameController.text.trim(),
@@ -131,6 +137,8 @@ class _AddPlayerScreenState extends State<AddPlayerScreen> {
         number: int.parse(numberController.text),
 
         positions: List.from(selectedPositions),
+
+        imagePath: imagePath,
 
         age: ageController.text.isEmpty
             ? null
@@ -162,6 +170,8 @@ class _AddPlayerScreenState extends State<AddPlayerScreen> {
       widget.player!.positions =
           List.from(selectedPositions);
 
+      widget.player!.imagePath = imagePath;
+      
       widget.player!.age =
           ageController.text.isEmpty
               ? null
@@ -220,18 +230,45 @@ class _AddPlayerScreenState extends State<AddPlayerScreen> {
           children: [
             Center(
               child: GestureDetector(
-                onTap: () {},
-                child: const CircleAvatar(
-                  radius: 55,
-                  backgroundColor: Color(0xFF233248),
-                  child: Icon(
-                    Icons.person,
-                    size: 55,
-                  ),
-                ),
-              ),
-            ),
 
+                onTap: () async {
+
+                  final path = await ImageService.pickImage();
+
+                  if (path != null) {
+
+                    setState(() {
+
+                      imagePath = path;
+
+                    });
+
+                  }
+
+                },
+
+                child: CircleAvatar(
+
+                  radius: 55,
+
+                  backgroundColor: const Color(0xFF233248),
+
+                  backgroundImage: imagePath != null
+                      ? FileImage(File(imagePath!))
+                      : null,
+
+                  child: imagePath == null
+                      ? const Icon(
+                          Icons.add_a_photo,
+                          size: 38,
+                        )
+                      : null,
+
+                ),
+
+              ),
+
+            ),
             const SizedBox(height: 30),
 
             const Text("Nombre"),

@@ -73,8 +73,9 @@ class StatsRow extends StatelessWidget {
 
             stat(player.assists),
 
-            stat(player.yellowCards, width: 36),
-            stat(player.redCards, width: 36),
+            stat(player.yellowCards),
+
+            stat(player.redCards),
 
             stat(
               isGoalkeeper

@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'models/player.dart';
 import 'models/player_position.dart';
 import 'screens/home/home_screen.dart';
+import 'models/callup.dart';
 
 Future<void> main() async {
 
@@ -13,8 +14,10 @@ Future<void> main() async {
 
   Hive.registerAdapter(PlayerAdapter());
   Hive.registerAdapter(PlayerPositionAdapter());
+  Hive.registerAdapter(CallupAdapter());
 
   await Hive.openBox<Player>("players");
+  await Hive.openBox<Callup>("callups");
 
   runApp(const LineUp11App());
 }
