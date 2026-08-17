@@ -88,7 +88,7 @@ class _AddPlayerScreenState extends State<AddPlayerScreen> {
           ),
         ),
         child: Text(
-          position.name.toUpperCase(),
+          position.label,
           style: TextStyle(
             color: selected
                 ? Colors.black

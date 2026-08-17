@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lineup11/screens/statistics/statistics_screen.dart';
+import 'package:MeriFoot/screens/statistics/statistics_screen.dart';
 
 import '../lineups/lineup_screen.dart';
 import '../players/players_screen.dart';
 import '../callups/callups_screen.dart';
 import '../fines/fines_screen.dart';
+import '../tactics/tactics_screen.dart';
+// import '../class_api/league_test_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -91,7 +93,14 @@ class HomeScreen extends StatelessWidget {
                       MenuCard(
                         icon: Icons.route,
                         title: "Jugadas",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const TacticsScreen(),
+                            ),
+                          );
+                        },
                       ),
 
                       MenuCard(
@@ -130,6 +139,18 @@ class HomeScreen extends StatelessWidget {
                           );
                         },
                       ),
+                      // MenuCard(
+                      //   icon: Icons.attach_money,
+                      //   title: "LIGA",
+                      //   onTap: () {
+                      //     Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (_) => const LeagueTestScreen(),
+                      //       ),
+                      //     );
+                      //   },
+                      // ),
 
                     ],
                   ),

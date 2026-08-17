@@ -6,56 +6,69 @@ part 'player_position.g.dart';
 enum PlayerPosition {
 
   @HiveField(0)
-  gk,
+  por,
 
   @HiveField(1)
-  lb,
+  ld,
 
   @HiveField(2)
-  cb,
+  li,
 
   @HiveField(3)
-  rb,
+  dfc,
 
   @HiveField(4)
-  lwb,
+  mcd,
 
   @HiveField(5)
-  rwb,
+  mc,
 
   @HiveField(6)
-  cdm,
+  mco,
 
   @HiveField(7)
-  lcm,
+  md,
 
   @HiveField(8)
-  cm,
+  mi,
 
   @HiveField(9)
-  rcm,
+  ed,
 
   @HiveField(10)
-  cam,
+  ei,
 
   @HiveField(11)
-  lm,
+  dc,
+}
 
-  @HiveField(12)
-  rm,
-
-  @HiveField(13)
-  lw,
-
-  @HiveField(14)
-  rw,
-
-  @HiveField(15)
-  st,
-
-  @HiveField(16)
-  ls,
-
-  @HiveField(17)
-  rs,
+extension PlayerPositionExtension on PlayerPosition {
+  String get label {
+    switch (this) {
+      case PlayerPosition.por:
+        return "POR";
+      case PlayerPosition.ld:
+        return "LD";
+      case PlayerPosition.li:
+        return "LI";
+      case PlayerPosition.dfc:
+        return "DFC";
+      case PlayerPosition.mcd:
+        return "MCD";
+      case PlayerPosition.mc:
+        return "MC";
+      case PlayerPosition.mco:
+        return "MCO";
+      case PlayerPosition.md:
+        return "MD";
+      case PlayerPosition.mi:
+        return "MI";
+      case PlayerPosition.ed:
+        return "ED";
+      case PlayerPosition.ei:
+        return "EI";
+      case PlayerPosition.dc:
+        return "DC";
+    }
+  }
 }

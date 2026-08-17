@@ -14,102 +14,72 @@ class PlayerPositionAdapter extends TypeAdapter<PlayerPosition> {
   PlayerPosition read(BinaryReader reader) {
     switch (reader.readByte()) {
       case 0:
-        return PlayerPosition.gk;
+        return PlayerPosition.por;
       case 1:
-        return PlayerPosition.lb;
+        return PlayerPosition.ld;
       case 2:
-        return PlayerPosition.cb;
+        return PlayerPosition.li;
       case 3:
-        return PlayerPosition.rb;
+        return PlayerPosition.dfc;
       case 4:
-        return PlayerPosition.lwb;
+        return PlayerPosition.mcd;
       case 5:
-        return PlayerPosition.rwb;
+        return PlayerPosition.mc;
       case 6:
-        return PlayerPosition.cdm;
+        return PlayerPosition.mco;
       case 7:
-        return PlayerPosition.lcm;
+        return PlayerPosition.md;
       case 8:
-        return PlayerPosition.cm;
+        return PlayerPosition.mi;
       case 9:
-        return PlayerPosition.rcm;
+        return PlayerPosition.ed;
       case 10:
-        return PlayerPosition.cam;
+        return PlayerPosition.ei;
       case 11:
-        return PlayerPosition.lm;
-      case 12:
-        return PlayerPosition.rm;
-      case 13:
-        return PlayerPosition.lw;
-      case 14:
-        return PlayerPosition.rw;
-      case 15:
-        return PlayerPosition.st;
-      case 16:
-        return PlayerPosition.ls;
-      case 17:
-        return PlayerPosition.rs;
+        return PlayerPosition.dc;
       default:
-        return PlayerPosition.gk;
+        return PlayerPosition.por;
     }
   }
 
   @override
   void write(BinaryWriter writer, PlayerPosition obj) {
     switch (obj) {
-      case PlayerPosition.gk:
+      case PlayerPosition.por:
         writer.writeByte(0);
         break;
-      case PlayerPosition.lb:
+      case PlayerPosition.ld:
         writer.writeByte(1);
         break;
-      case PlayerPosition.cb:
+      case PlayerPosition.li:
         writer.writeByte(2);
         break;
-      case PlayerPosition.rb:
+      case PlayerPosition.dfc:
         writer.writeByte(3);
         break;
-      case PlayerPosition.lwb:
+      case PlayerPosition.mcd:
         writer.writeByte(4);
         break;
-      case PlayerPosition.rwb:
+      case PlayerPosition.mc:
         writer.writeByte(5);
         break;
-      case PlayerPosition.cdm:
+      case PlayerPosition.mco:
         writer.writeByte(6);
         break;
-      case PlayerPosition.lcm:
+      case PlayerPosition.md:
         writer.writeByte(7);
         break;
-      case PlayerPosition.cm:
+      case PlayerPosition.mi:
         writer.writeByte(8);
         break;
-      case PlayerPosition.rcm:
+      case PlayerPosition.ed:
         writer.writeByte(9);
         break;
-      case PlayerPosition.cam:
+      case PlayerPosition.ei:
         writer.writeByte(10);
         break;
-      case PlayerPosition.lm:
+      case PlayerPosition.dc:
         writer.writeByte(11);
-        break;
-      case PlayerPosition.rm:
-        writer.writeByte(12);
-        break;
-      case PlayerPosition.lw:
-        writer.writeByte(13);
-        break;
-      case PlayerPosition.rw:
-        writer.writeByte(14);
-        break;
-      case PlayerPosition.st:
-        writer.writeByte(15);
-        break;
-      case PlayerPosition.ls:
-        writer.writeByte(16);
-        break;
-      case PlayerPosition.rs:
-        writer.writeByte(17);
         break;
     }
   }

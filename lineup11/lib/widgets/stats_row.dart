@@ -29,7 +29,7 @@ class StatsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isGoalkeeper = player.positions.any(
-      (p) => p.name == "gk",
+      (p) => p.name == "por",
     );
 
     return InkWell(

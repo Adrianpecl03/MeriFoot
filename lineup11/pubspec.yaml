@@ -1,5 +1,5 @@
-name: lineup11
-description: "A new Flutter project."
+name: MeriFoot
+description: "A new Flutter project. Done by Adrián Peñafiel Clavijo"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -39,12 +39,14 @@ dependencies:
   uuid: ^4.5.1
   image_picker: ^1.1.2
   path_provider: ^2.1.5
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^2.0.1
   build_runner: ^2.4.13
+  flutter_launcher_icons: ^0.14.4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -55,6 +57,12 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/meridiana.png"
+  adaptive_icon_background: "#0B1020"
 
 # The following section is specific to Flutter packages.
 flutter:
