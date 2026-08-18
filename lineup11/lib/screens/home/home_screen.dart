@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:MeriFoot/screens/statistics/statistics_screen.dart';
+import 'package:merifoot/screens/statistics/statistics_screen.dart';
 
 import '../lineups/lineup_screen.dart';
 import '../players/players_screen.dart';
@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   children: [
                     const Text(
-                      "LINEUP11",
+                      "MERIFOOT",
                       style: TextStyle(
                         fontSize: 34,
                         fontWeight: FontWeight.bold,
@@ -50,6 +50,16 @@ class HomeScreen extends StatelessWidget {
                     Image.asset(
                       "assets/images/meridiana.png",
                       height: 80,
+                    ),
+                    const SizedBox(height: 15),
+
+                    const Text(
+                      "Hecho por Adrián Peñafiel",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
+                      ),
                     ),
                   ],
                 ),
